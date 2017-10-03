@@ -1,0 +1,14 @@
+task initReact(type: Exec) {
+    workingDir "$rootDir/react/"
+    commandLine "cmd", "/c", "npm install --save react@16.0.0 react-native"
+}
+
+task buildReact(type: Exec) {
+    workingDir "$rootDir/react/"
+    commandLine "cmd", "/c", "react-native bundle " +
+            "--platform android " +
+            "--dev false " +
+            "--entry-file index.js " +
+            "--bundle-output $projectDir/src/main/assets/index.android.bundle " +
+            "--assets-dest $projectDir/co/tula/nativewidget/src/main/res/"
+}
